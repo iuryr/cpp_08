@@ -1,8 +1,9 @@
 #include "Span.hpp"
 
 #include <stdexcept> //out_of_range
-#include <algorithm> //
+#include <algorithm> //min_element, max_element, sort
 #include <limits> // numeric_limits
+#include <iterator> //distance
 
 Span::Span(void): _maxSize(0), _numbers()
 {

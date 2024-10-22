@@ -1,6 +1,7 @@
 #ifndef _SPAN_HPP_
 #define _SPAN_HPP_
 
+#include <stdexcept>
 #include <vector>
 
 class Span
@@ -17,7 +18,15 @@ public:
 	int longestSpan(void);
 
 	template<typename InputIterator>
-	void addRange(InputIterator begin, InputIterator end);
+	void addRange(InputIterator begin, InputIterator end)
+	{
+		if (std::distance(begin, end) + _numbers.size() > _maxSize)
+		{
+			throw std::out_of_range("Adding this range would exceed object max size");
+		}
+
+		_numbers.insert(_numbers.end(), begin, end);
+	}
 
 private:
 	unsigned int _maxSize;
